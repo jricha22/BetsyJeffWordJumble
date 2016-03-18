@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -19,22 +19,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".GameScreenActivity"
+            android:name=".view.GameScreenActivity"
             android:label="@string/title_activity_game_screen"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".view.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="edu.westga.betsyjeffwordjumble.MainActivity" />
+                android:value=".view.MainActivity" />
         </activity>
         <activity
-            android:name=".ResultsActivity"
+            android:name=".view.ResultsActivity"
             android:label="@string/title_activity_results"
-            android:parentActivityName=".GameScreenActivity"
+            android:parentActivityName=".view.GameScreenActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="edu.westga.betsyjeffwordjumble.GameScreenActivity" />
+                android:value=".view.GameScreenActivity" />
         </activity>
     </application>
 

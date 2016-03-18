@@ -1,10 +1,13 @@
-package edu.westga.betsyjeffwordjumble;
+package edu.westga.betsyjeffwordjumble.viewTests;
 
 import android.app.Instrumentation;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.TouchUtils;
 import android.widget.Button;
-import android.widget.RadioButton;
+
+import edu.westga.betsyjeffwordjumble.R;
+import edu.westga.betsyjeffwordjumble.view.GameScreenActivity;
+import edu.westga.betsyjeffwordjumble.view.MainActivity;
 
 /**
  * Created by Betsy on 3/18/2016.
