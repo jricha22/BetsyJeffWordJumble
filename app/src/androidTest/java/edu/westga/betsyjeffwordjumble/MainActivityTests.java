@@ -1,6 +1,8 @@
 package edu.westga.betsyjeffwordjumble;
 
+import android.app.Instrumentation;
 import android.test.ActivityInstrumentationTestCase2;
+import android.test.TouchUtils;
 import android.widget.Button;
 import android.widget.RadioButton;
 
@@ -28,5 +30,17 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
 
     public void testButtonIsEnabled() {
         assertTrue(btnPlay.isEnabled());
+    }
+
+    public void testPlayButtonLoadsGameScreenActivity() {
+        // register next activity that need to be monitored.
+        Instrumentation.ActivityMonitor activityMonitor = getInstrumentation()
+                .addMonitor(GameScreenActivity.class.getName(), null, false);
+        // Tap play button
+        TouchUtils.clickView(this, btnPlay);
+        GameScreenActivity nextActivity = (GameScreenActivity)getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 10000);
+        // next activity is opened and captured.
+        assertNotNull("Game screen activity is not launched", nextActivity);
+        nextActivity .finish();
     }
 }
