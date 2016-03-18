@@ -1,5 +1,6 @@
 package edu.westga.betsyjeffwordjumble;
 
+import android.app.Instrumentation;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.TouchUtils;
 import android.widget.Button;
@@ -50,6 +51,20 @@ public class GameScreenActivityTests extends ActivityInstrumentationTestCase2<Ga
     private void testEnterButtonIsEnabledWhenNonEmptyStringIsEntered() {
         enterAnswer("t");
         assertTrue(mBtnEnter.isEnabled());
+    }
+
+    public void testEnterButtonLoadsResultActivity() {
+        // register next activity that needs to be monitored.
+        Instrumentation.ActivityMonitor activityMonitor = getInstrumentation()
+                .addMonitor(ResultsActivity.class.getName(), null, false);
+        // Enter an answer
+        enterAnswer("t");
+        // Tap enter button
+        TouchUtils.clickView(this, mBtnEnter);
+        ResultsActivity nextActivity = (ResultsActivity)getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 10000);
+        // next activity is opened and captured.
+        assertNotNull("Result screen activity is not launched", nextActivity);
+        nextActivity .finish();
     }
 
 }

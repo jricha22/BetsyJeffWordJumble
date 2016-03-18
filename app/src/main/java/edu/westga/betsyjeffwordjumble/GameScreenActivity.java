@@ -1,5 +1,6 @@
 package edu.westga.betsyjeffwordjumble;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -58,5 +59,11 @@ public class GameScreenActivity extends AppCompatActivity {
             GameScreenActivity.this.mBtnEnter.setEnabled(answerNotEmpty);
         }
     };
+
+    /** Called when the user clicks the Enter button from Game screen*/
+    public void showResult(View view) {
+        Intent intent = new Intent(this, ResultsActivity.class);
+        startActivity(intent);
+    }
 
 }
