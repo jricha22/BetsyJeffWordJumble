@@ -30,5 +30,6 @@
         android:text="Play Again"
         android:id="@+id/btnReplay"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="reloadGame"/>
 </RelativeLayout>
