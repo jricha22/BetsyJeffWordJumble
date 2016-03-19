@@ -1,5 +1,9 @@
 package edu.betsyjeffwordjumble.model;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -21,11 +25,20 @@ public class WordJumble {
      */
     public WordJumble() {
         this.randomGenerator = new Random();
-        words = new ArrayList<>();
-        this.words.add("ocean");
-        this.words.add("greet");
-        this.words.add("quick");
-        this.words.add("jumbo");
+        this.words = new ArrayList<>();
+        InputStream wordStream = getClass().getClassLoader().getResourceAsStream("words.txt");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(wordStream));
+        StringBuilder out = new StringBuilder();
+        String word;
+        try {
+            while ((word = reader.readLine()) != null) {
+                this.words.add(word.toLowerCase());
+            }
+            reader.close();
+        }
+        catch (IOException err) {
+            // Nothing
+        }
     }
 
     /**

@@ -15,7 +15,7 @@ public class WhenCreateWordJumbleTests {
      */
     @Test
     public void testProvidesAWordAfterCreation() {
-        WordJumble myWordJumble = new WordJumble();
+        WordJumble myWordJumble = new WordJumble(100);
         assertNotNull(myWordJumble.getAWord());
     }
 
@@ -25,7 +25,7 @@ public class WhenCreateWordJumbleTests {
      */
     @Test
     public void testProvidesAFiveCharacterWordAfterCreation() {
-        WordJumble myWordJumble = new WordJumble();
+        WordJumble myWordJumble = new WordJumble(100);
         assertEquals(5, myWordJumble.getAWord().length());
     }
 
@@ -35,7 +35,7 @@ public class WhenCreateWordJumbleTests {
     @Test
     public void testReturnedWordIsScrambled() {
         WordJumble myWordJumble = new WordJumble(100);
-        assertEquals("iuckq", myWordJumble.getAWord());
+        assertEquals("ahirc", myWordJumble.getAWord());
     }
 
     /**
@@ -45,7 +45,7 @@ public class WhenCreateWordJumbleTests {
     public void testGuessWordCorrectlyIsTrue() {
         WordJumble myWordJumble = new WordJumble(100);
         String jumbled = myWordJumble.getAWord();
-        assertEquals(true, myWordJumble.checkResult("quick"));
+        assertEquals(true, myWordJumble.checkResult("chair"));
     }
 
     /**
@@ -55,7 +55,7 @@ public class WhenCreateWordJumbleTests {
     public void testGuessWordIncorrectlyIsFalse() {
         WordJumble myWordJumble = new WordJumble(100);
         String jumbled = myWordJumble.getAWord();
-        assertEquals(false, myWordJumble.checkResult("meter"));
+        assertEquals(false, myWordJumble.checkResult("xxxxx"));
     }
 
     /**
