@@ -1,4 +1,4 @@
-package edu.betsyjeffwordjumble.model;
+package edu.westga.betsyjeffwordjumble.model;
 
 import java.io.BufferedReader;
 import java.io.IOException;
