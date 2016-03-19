@@ -61,6 +61,6 @@ public class WordJumble {
      * @return True if word is correct, false otherwise
      */
     public boolean checkResult(String theGuess) {
-        return theGuess.equals(this.currentWord);
+        return theGuess != null && theGuess.equals(this.currentWord);
     }
 }

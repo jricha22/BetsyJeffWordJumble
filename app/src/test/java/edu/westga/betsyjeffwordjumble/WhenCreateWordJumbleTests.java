@@ -57,4 +57,23 @@ public class WhenCreateWordJumbleTests {
         String jumbled = myWordJumble.getAWord();
         assertEquals(false, myWordJumble.checkResult("meter"));
     }
+
+    /**
+     * Test guessing null returns False
+     */
+    @Test
+    public void testGuessNullIsFalse() {
+        WordJumble myWordJumble = new WordJumble(100);
+        String jumbled = myWordJumble.getAWord();
+        assertEquals(false, myWordJumble.checkResult(null));
+    }
+
+    /**
+     * Test guessing null without getting word is False
+     */
+    @Test
+    public void testGuessNullWithoutWordGetIsFalse() {
+        WordJumble myWordJumble = new WordJumble(100);
+        assertEquals(false, myWordJumble.checkResult(null));
+    }
 }
