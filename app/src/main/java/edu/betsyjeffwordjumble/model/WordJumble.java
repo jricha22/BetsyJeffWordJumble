@@ -17,6 +17,8 @@ import java.util.Random;
 
 public class WordJumble {
     private List<String> words;
+    private List<String> wordsFive;
+    private List<String> wordsSix;
     private Random randomGenerator;
     private String currentWord;
 
@@ -26,6 +28,8 @@ public class WordJumble {
     public WordJumble() {
         this.randomGenerator = new Random();
         this.words = new ArrayList<>();
+        this.wordsFive = new ArrayList<>();
+        this.wordsSix = new ArrayList<>();
         InputStream wordStream = getClass().getClassLoader().getResourceAsStream("words.txt");
         BufferedReader reader = new BufferedReader(new InputStreamReader(wordStream));
         StringBuilder out = new StringBuilder();
@@ -39,6 +43,14 @@ public class WordJumble {
         catch (IOException err) {
             // Nothing
         }
+        for (String curr: this.words) {
+            if (curr.length() == 5) {
+                this.wordsFive.add(curr);
+            }
+            if (curr.length() == 6) {
+                this.wordsSix.add(curr);
+            }
+        }
     }
 
     /**
@@ -51,6 +63,17 @@ public class WordJumble {
         this.randomGenerator = new Random(seed);
     }
 
+    private String scrambleWord(String word) {
+        List<Character> characters = new ArrayList<>();
+        for(char c :  word.toCharArray())
+            characters.add(c);
+        Collections.shuffle(characters, this.randomGenerator);
+        StringBuilder myBuilder = new StringBuilder();
+        for(char aChar : characters)
+            myBuilder.append(aChar);
+        return myBuilder.toString();
+    }
+
     /**
      * Get a word from the word list that is randomly scrambled.
      * Remembers the selected word, can be checked by calling checkResult.
@@ -58,14 +81,27 @@ public class WordJumble {
      */
     public String getAWord() {
         this.currentWord = this.words.get(this.randomGenerator.nextInt(this.words.size()));
-        List<Character> characters = new ArrayList<>();
-        for(char c :  this.currentWord.toCharArray())
-            characters.add(c);
-        Collections.shuffle(characters, this.randomGenerator);
-        StringBuilder myBuilder = new StringBuilder();
-        for(char aChar : characters)
-            myBuilder.append(aChar);
-        return myBuilder.toString();
+        return scrambleWord(this.currentWord);
+    }
+
+    /**
+     * Get a five character word from the word list that is randomly scrambled.
+     * Remembers the selected word, can be checked by calling checkResult.
+     * @return A five character word from the word list with letters randomly shuffled
+     */
+    public String getAFiveCharWord() {
+        this.currentWord = this.wordsFive.get(this.randomGenerator.nextInt(this.wordsFive.size()));
+        return scrambleWord(this.currentWord);
+    }
+
+    /**
+     * Get a six character word from the word list that is randomly scrambled.
+     * Remembers the selected word, can be checked by calling checkResult.
+     * @return A six character word from the word list with letters randomly shuffled
+     */
+    public String getASixCharWord() {
+        this.currentWord = this.wordsSix.get(this.randomGenerator.nextInt(this.wordsSix.size()));
+        return scrambleWord(this.currentWord);
     }
 
     /**

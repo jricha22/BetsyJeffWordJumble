@@ -19,14 +19,32 @@ public class WhenCreateWordJumbleTests {
         assertNotNull(myWordJumble.getAWord());
     }
 
-
     /**
-     * Test that default word length is 5
+     * Test that retrieving 4 5 character words are all length is 5
      */
     @Test
-    public void testProvidesAFiveCharacterWordAfterCreation() {
+    public void testRetrieveFourFiveCharWordsAreAllLengthFive() {
         WordJumble myWordJumble = new WordJumble(100);
-        assertEquals(5, myWordJumble.getAWord().length());
+        int total = 0;
+        total += myWordJumble.getAFiveCharWord().length();
+        total += myWordJumble.getAFiveCharWord().length();
+        total += myWordJumble.getAFiveCharWord().length();
+        total += myWordJumble.getAFiveCharWord().length();
+        assertEquals(20, total);
+    }
+
+    /**
+     * Test that retrieving 4 6 character words are all length is 6
+     */
+    @Test
+    public void testRetrieveFourSixCharWordsAreAllLengthSix() {
+        WordJumble myWordJumble = new WordJumble(100);
+        int total = 0;
+        total += myWordJumble.getASixCharWord().length();
+        total += myWordJumble.getASixCharWord().length();
+        total += myWordJumble.getASixCharWord().length();
+        total += myWordJumble.getASixCharWord().length();
+        assertEquals(24, total);
     }
 
     /**
@@ -36,6 +54,24 @@ public class WhenCreateWordJumbleTests {
     public void testReturnedWordIsScrambled() {
         WordJumble myWordJumble = new WordJumble(100);
         assertEquals("ahirc", myWordJumble.getAWord());
+    }
+
+    /**
+     * Test that returned five char word is scrambled
+     */
+    @Test
+    public void testReturnedFiveCharWordIsScrambled() {
+        WordJumble myWordJumble = new WordJumble(100);
+        assertEquals("bmera", myWordJumble.getAFiveCharWord());
+    }
+
+    /**
+     * Test that returned five char word is scrambled
+     */
+    @Test
+    public void testReturnedSixCharWordIsScrambled() {
+        WordJumble myWordJumble = new WordJumble(100);
+        assertEquals("ppeoel", myWordJumble.getASixCharWord());
     }
 
     /**
@@ -49,6 +85,26 @@ public class WhenCreateWordJumbleTests {
     }
 
     /**
+     * Test guessing five char word correctly returns True
+     */
+    @Test
+    public void testGuessFiveCharWordCorrectlyIsTrue() {
+        WordJumble myWordJumble = new WordJumble(100);
+        String jumbled = myWordJumble.getAFiveCharWord();
+        assertEquals(true, myWordJumble.checkResult("amber"));
+    }
+
+    /**
+     * Test guessing six char word correctly returns True
+     */
+    @Test
+    public void testGuessSixCharWordCorrectlyIsTrue() {
+        WordJumble myWordJumble = new WordJumble(100);
+        String jumbled = myWordJumble.getASixCharWord();
+        assertEquals(true, myWordJumble.checkResult("people"));
+    }
+
+    /**
      * Test guessing incorrectly returns False
      */
     @Test
@@ -59,12 +115,52 @@ public class WhenCreateWordJumbleTests {
     }
 
     /**
+     * Test guessing five char word incorrectly returns False
+     */
+    @Test
+    public void testGuessFiveCharWordIncorrectlyIsFalse() {
+        WordJumble myWordJumble = new WordJumble(100);
+        String jumbled = myWordJumble.getAFiveCharWord();
+        assertEquals(false, myWordJumble.checkResult("xxxxx"));
+    }
+
+    /**
+     * Test guessing incorrectly returns False
+     */
+    @Test
+    public void testGuessSixCharWordIncorrectlyIsFalse() {
+        WordJumble myWordJumble = new WordJumble(100);
+        String jumbled = myWordJumble.getASixCharWord();
+        assertEquals(false, myWordJumble.checkResult("xxxxxx"));
+    }
+
+    /**
      * Test guessing null returns False
      */
     @Test
     public void testGuessNullIsFalse() {
         WordJumble myWordJumble = new WordJumble(100);
         String jumbled = myWordJumble.getAWord();
+        assertEquals(false, myWordJumble.checkResult(null));
+    }
+
+    /**
+     * Test guessing 5 char word null returns False
+     */
+    @Test
+    public void testGuessFiveCharWordNullIsFalse() {
+        WordJumble myWordJumble = new WordJumble(100);
+        String jumbled = myWordJumble.getAFiveCharWord();
+        assertEquals(false, myWordJumble.checkResult(null));
+    }
+
+    /**
+     * Test guessing 6 char word null returns False
+     */
+    @Test
+    public void testGuessSixCharNullIsFalse() {
+        WordJumble myWordJumble = new WordJumble(100);
+        String jumbled = myWordJumble.getASixCharWord();
         assertEquals(false, myWordJumble.checkResult(null));
     }
 
