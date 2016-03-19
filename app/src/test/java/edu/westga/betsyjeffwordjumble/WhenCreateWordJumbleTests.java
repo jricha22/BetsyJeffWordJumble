@@ -2,7 +2,7 @@ package edu.westga.betsyjeffwordjumble;
 
 import org.junit.Test;
 
-import edu.betsyjeffwordjumble.model.WordJumble;
+import edu.westga.betsyjeffwordjumble.model.WordJumble;
 
 import static org.junit.Assert.*;
 

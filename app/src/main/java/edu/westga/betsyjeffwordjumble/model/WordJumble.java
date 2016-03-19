@@ -1,4 +1,4 @@
-package edu.betsyjeffwordjumble.model;
+package edu.westga.betsyjeffwordjumble.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
