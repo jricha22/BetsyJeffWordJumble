@@ -27,14 +27,15 @@ public class WordJumble {
      */
     public WordJumble() {
         this.randomGenerator = new Random();
+        this.currentWord = null;
         this.words = new ArrayList<>();
         this.wordsFive = new ArrayList<>();
         this.wordsSix = new ArrayList<>();
-        InputStream wordStream = getClass().getClassLoader().getResourceAsStream("words.txt");
-        BufferedReader reader = new BufferedReader(new InputStreamReader(wordStream));
-        StringBuilder out = new StringBuilder();
-        String word;
         try {
+            InputStream wordStream = getClass().getClassLoader().getResourceAsStream("words.txt");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(wordStream));
+            StringBuilder out = new StringBuilder();
+            String word;
             while ((word = reader.readLine()) != null) {
                 this.words.add(word.toLowerCase());
             }
@@ -50,6 +51,15 @@ public class WordJumble {
             if (curr.length() == 6) {
                 this.wordsSix.add(curr);
             }
+        }
+        if (this.words.isEmpty()) {
+            this.words.add("error");
+        }
+        if (this.wordsFive.isEmpty()) {
+            this.wordsFive.add("error");
+        }
+        if (this.wordsSix.isEmpty()) {
+            this.wordsSix.add("errors");
         }
     }
 
@@ -111,5 +121,29 @@ public class WordJumble {
      */
     public boolean checkResult(String theGuess) {
         return theGuess != null && theGuess.equals(this.currentWord);
+    }
+
+    /**
+     * Get a hint for the current word. A hint is a string that shows one random character in
+     * the correct position, the rest are hidden by asterisks
+     * @return The hint or null if no word currently selected
+     */
+    public String getAHint() {
+        if (this.currentWord == null || this.currentWord.isEmpty())
+        {
+            return null;
+        }
+        int indexToShow = this.randomGenerator.nextInt(this.currentWord.length());
+        StringBuilder hint;
+        if (this.currentWord.length() == 5)
+        {
+            hint = new StringBuilder("*****");
+        }
+        else
+        {
+            hint = new StringBuilder("******");
+        }
+        hint.setCharAt(indexToShow, this.currentWord.charAt(indexToShow));
+        return hint.toString();
     }
 }

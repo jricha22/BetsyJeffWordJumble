@@ -172,4 +172,43 @@ public class WhenCreateWordJumbleTests {
         WordJumble myWordJumble = new WordJumble(100);
         assertEquals(false, myWordJumble.checkResult(null));
     }
+
+    /**
+     * Test that the hint returns null if no word selected
+     */
+    @Test
+    public void testHintIsNullBeforeWordRetrieved() {
+        WordJumble myWordJumble = new WordJumble(100);
+        assertNull(myWordJumble.getAHint());
+    }
+
+    /**
+     * Test that the hint is correct for any length word retrieved
+     */
+    @Test
+    public void testHintIsCorrectForAnyLengthWord() {
+        WordJumble myWordJumble = new WordJumble(100);
+        assertEquals("ahirc", myWordJumble.getAWord());
+        assertEquals("*h***", myWordJumble.getAHint());
+    }
+
+    /**
+     * Test that the hint is correct for 5 length word retrieved
+     */
+    @Test
+    public void testHintIsCorrectForFiveLengthWord() {
+        WordJumble myWordJumble = new WordJumble(100);
+        assertEquals("bmera", myWordJumble.getAFiveCharWord());
+        assertEquals("*m***", myWordJumble.getAHint());
+    }
+
+    /**
+     * Test that the hint is correct for 6 length word retrieved
+     */
+    @Test
+    public void testHintIsCorrectForSixLengthWord() {
+        WordJumble myWordJumble = new WordJumble(100);
+        assertEquals("ppeoel", myWordJumble.getASixCharWord());
+        assertEquals("**o***", myWordJumble.getAHint());
+    }
 }
