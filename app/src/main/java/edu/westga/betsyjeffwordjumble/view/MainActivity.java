@@ -10,14 +10,18 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import edu.westga.betsyjeffwordjumble.R;
 
 public class MainActivity extends AppCompatActivity {
 
+    public final static String LETTER_COUNT = "edu.westga.betsyjeffwordjumble.LETTER_COUNT";
+
     private RadioGroup m_radioGroup;
     private Button m_btnPlay;
+    private RadioButton m_checkedRadioButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
                     m_btnPlay.setEnabled(false);
                 } else {
                     m_btnPlay.setEnabled(true);
+                    m_checkedRadioButton = (RadioButton) m_radioGroup.findViewById(m_radioGroup.getCheckedRadioButtonId());
                 }
             }
         });
@@ -78,6 +83,19 @@ public class MainActivity extends AppCompatActivity {
     /** Called when the user clicks the Send button */
     public void playGame(View view) {
         Intent intent = new Intent(this, GameScreenActivity.class);
+        int checkedIndex = m_radioGroup.indexOfChild(m_checkedRadioButton);
+        int numberOfLetters = 0;
+        switch (checkedIndex) {
+            case 0:
+                numberOfLetters = 5;
+                break;
+            case 1:
+                numberOfLetters = 6;
+                break;
+            default:
+                break;
+        }
+        intent.putExtra(LETTER_COUNT, numberOfLetters);
         startActivity(intent);
     }
 }
