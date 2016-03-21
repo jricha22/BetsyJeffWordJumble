@@ -11,13 +11,20 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import edu.westga.betsyjeffwordjumble.R;
+import edu.westga.betsyjeffwordjumble.controller.Controller;
 
 public class GameScreenActivity extends AppCompatActivity {
 
+    public final static String RESULT = "edu.westga.betsyjeffwordjumble.RESULT";
+
     private Button mBtnEnter;
     private EditText mEtAnswer;
+    private TextView mTvScrambledWord;
+    private Controller mController;
+    boolean mResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +36,10 @@ public class GameScreenActivity extends AppCompatActivity {
 
         mEtAnswer = (EditText)findViewById(R.id.etAnswer);
         mEtAnswer.addTextChangedListener(this.watcher);
+
+        mTvScrambledWord = (TextView)findViewById(R.id.tvScrambledWord);
+        mController  = new Controller();
+        mTvScrambledWord.setText(mController.getAWord());
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -65,6 +76,9 @@ public class GameScreenActivity extends AppCompatActivity {
     /** Called when the user clicks the Enter button from Game screen*/
     public void showResult(View view) {
         Intent intent = new Intent(this, ResultsActivity.class);
+        String theGuess = mEtAnswer.getText().toString();
+        mResult = mController.checkResult(theGuess);
+        intent.putExtra(RESULT, mResult);
         startActivity(intent);
     }
 

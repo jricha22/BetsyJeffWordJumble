@@ -5,8 +5,10 @@ import android.test.ActivityInstrumentationTestCase2;
 import android.test.TouchUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import edu.westga.betsyjeffwordjumble.R;
+import edu.westga.betsyjeffwordjumble.model.WordJumble;
 import edu.westga.betsyjeffwordjumble.view.GameScreenActivity;
 import edu.westga.betsyjeffwordjumble.view.ResultsActivity;
 
@@ -17,6 +19,7 @@ public class GameScreenActivityTests extends ActivityInstrumentationTestCase2<Ga
     private GameScreenActivity mGameScreenActivity;
     private Button mBtnEnter;
     private EditText mEtAnswer;
+    private TextView mTvScrambledWord;
 
     public GameScreenActivityTests() {
         super(GameScreenActivity.class);
@@ -27,6 +30,7 @@ public class GameScreenActivityTests extends ActivityInstrumentationTestCase2<Ga
         mGameScreenActivity = getActivity();
         mBtnEnter = (Button)mGameScreenActivity.findViewById(R.id.btnEnter);
         mEtAnswer = (EditText)mGameScreenActivity.findViewById(R.id.etAnswer);
+        mTvScrambledWord = (TextView)mGameScreenActivity.findViewById(R.id.tvScrambledWord);
     }
 
     public void testActivityExists() {
@@ -71,4 +75,7 @@ public class GameScreenActivityTests extends ActivityInstrumentationTestCase2<Ga
         nextActivity .finish();
     }
 
+    public void testTextViewHasScrambledWord() {
+       assertTrue("Scrambled word not displayed", mTvScrambledWord.getText().toString().trim().length()>0);
+    }
 }
