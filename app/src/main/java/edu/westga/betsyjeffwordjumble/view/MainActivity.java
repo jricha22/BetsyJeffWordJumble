@@ -9,15 +9,37 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.RadioGroup;
 
 import edu.westga.betsyjeffwordjumble.R;
 
 public class MainActivity extends AppCompatActivity {
 
+    private RadioGroup m_radioGroup;
+    private Button m_btnPlay;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        m_btnPlay = (Button)findViewById(R.id.btnPlay);
+        m_btnPlay.setEnabled(false);
+        m_radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        m_radioGroup.clearCheck();
+        m_radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                if (m_radioGroup.getCheckedRadioButtonId() == -1) {
+                    m_btnPlay.setEnabled(false);
+                } else {
+                    m_btnPlay.setEnabled(true);
+                }
+            }
+        });
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
