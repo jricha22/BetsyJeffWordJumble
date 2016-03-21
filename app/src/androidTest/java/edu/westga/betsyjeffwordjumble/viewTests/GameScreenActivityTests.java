@@ -8,7 +8,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import edu.westga.betsyjeffwordjumble.R;
-import edu.westga.betsyjeffwordjumble.model.WordJumble;
 import edu.westga.betsyjeffwordjumble.view.GameScreenActivity;
 import edu.westga.betsyjeffwordjumble.view.ResultsActivity;
 
