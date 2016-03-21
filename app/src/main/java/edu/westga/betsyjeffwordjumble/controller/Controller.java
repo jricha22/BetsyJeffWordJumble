@@ -21,4 +21,19 @@ public class Controller {
         return m_wordJumble.checkResult(theGuess);
     }
 
+    public String getAFiveCharWord() {
+        // TODO
+        return "quick";
+    }
+
+    public String getASixCharWord() {
+        // TODO
+        return "sixsix";
+    }
+
+    public String getAHint() {
+        // TODO
+        return null;
+    }
+
 }

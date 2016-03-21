@@ -31,15 +31,23 @@ public class GameScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_screen);
 
+        m_tvScrambledWord = (TextView)findViewById(R.id.tvScrambledWord);
+        m_controller = new Controller();
+
         m_btnEnter = (Button)findViewById(R.id.btnEnter);
         m_btnEnter.setEnabled(false);
 
         m_etAnswer = (EditText)findViewById(R.id.etAnswer);
         m_etAnswer.addTextChangedListener(this.watcher);
 
-        m_tvScrambledWord = (TextView)findViewById(R.id.tvScrambledWord);
-        m_controller = new Controller();
-        m_tvScrambledWord.setText(m_controller.getAWord());
+        Intent intent = getIntent();
+        int letterCount = intent.getIntExtra(MainActivity.LETTER_COUNT, 0);
+        if (letterCount == 5) {
+            m_tvScrambledWord.setText(m_controller.getAFiveCharWord());
+        }
+        else if (letterCount == 6) {
+            m_tvScrambledWord.setText(m_controller.getASixCharWord());
+        }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

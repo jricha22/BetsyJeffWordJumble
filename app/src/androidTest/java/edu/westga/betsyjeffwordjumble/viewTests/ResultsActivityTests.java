@@ -31,7 +31,6 @@ public class ResultsActivityTests extends ActivityInstrumentationTestCase2<Resul
 
     protected void setUp() {
         Intent intent = new Intent();
-        //intent.setClassName(getInstrumentation().getTargetContext(), GameScreenActivity.class.getName());
         intent.putExtra(RESULT, "Correct!");
         setActivityIntent(intent);
         m_resultsActivity = getActivity();
