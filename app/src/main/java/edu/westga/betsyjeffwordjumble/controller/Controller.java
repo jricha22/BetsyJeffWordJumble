@@ -7,18 +7,18 @@ import edu.westga.betsyjeffwordjumble.model.WordJumble;
  * Created by Betsy on 3/21/2016.
  */
 public class Controller {
-    private WordJumble mWordJumble;
+    private WordJumble m_wordJumble;
 
     public Controller() {
-        mWordJumble = new WordJumble();
+        m_wordJumble = new WordJumble();
     }
 
     public String getAWord() {
-        return mWordJumble.getAWord();
+        return m_wordJumble.getAWord();
     }
 
     public boolean checkResult(String theGuess) {
-        return mWordJumble.checkResult(theGuess);
+        return m_wordJumble.checkResult(theGuess);
     }
 
 }
