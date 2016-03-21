@@ -14,8 +14,8 @@ import edu.westga.betsyjeffwordjumble.view.MainActivity;
  */
 public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActivity> {
 
-    MainActivity mActivity;
-    Button btnPlay;
+    MainActivity m_activity;
+    Button m_btnPlay;
 
     public MainActivityTests() {
         super(MainActivity.class);
@@ -23,16 +23,16 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
 
     @Override
     protected void setUp() {
-        mActivity = getActivity();
-        btnPlay = (Button)mActivity.findViewById(R.id.btnPlay);
+        m_activity = getActivity();
+        m_btnPlay = (Button) m_activity.findViewById(R.id.btnPlay);
     }
 
     public void testActivityExists() {
-        assertNotNull(mActivity);
+        assertNotNull(m_activity);
     }
 
     public void testButtonIsEnabled() {
-        assertTrue(btnPlay.isEnabled());
+        assertTrue(m_btnPlay.isEnabled());
     }
 
     public void testPlayButtonLoadsGameScreenActivity() {
@@ -40,7 +40,7 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
         Instrumentation.ActivityMonitor activityMonitor = getInstrumentation()
                 .addMonitor(GameScreenActivity.class.getName(), null, false);
         // Tap play button
-        TouchUtils.clickView(this, btnPlay);
+        TouchUtils.clickView(this, m_btnPlay);
         GameScreenActivity nextActivity = (GameScreenActivity)getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 10000);
         // next activity is opened and captured.
         assertNotNull("Game screen activity is not launched", nextActivity);

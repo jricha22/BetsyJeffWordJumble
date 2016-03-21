@@ -15,10 +15,10 @@ import edu.westga.betsyjeffwordjumble.view.ResultsActivity;
  * Created by Betsy on 3/18/2016.
  */
 public class GameScreenActivityTests extends ActivityInstrumentationTestCase2<GameScreenActivity> {
-    private GameScreenActivity mGameScreenActivity;
-    private Button mBtnEnter;
-    private EditText mEtAnswer;
-    private TextView mTvScrambledWord;
+    private GameScreenActivity m_gameScreenActivity;
+    private Button m_btnEnter;
+    private EditText m_etAnswer;
+    private TextView m_tvScrambledWord;
 
     public GameScreenActivityTests() {
         super(GameScreenActivity.class);
@@ -26,18 +26,18 @@ public class GameScreenActivityTests extends ActivityInstrumentationTestCase2<Ga
 
     @Override
     protected void setUp() {
-        mGameScreenActivity = getActivity();
-        mBtnEnter = (Button)mGameScreenActivity.findViewById(R.id.btnEnter);
-        mEtAnswer = (EditText)mGameScreenActivity.findViewById(R.id.etAnswer);
-        mTvScrambledWord = (TextView)mGameScreenActivity.findViewById(R.id.tvScrambledWord);
+        m_gameScreenActivity = getActivity();
+        m_btnEnter = (Button) m_gameScreenActivity.findViewById(R.id.btnEnter);
+        m_etAnswer = (EditText) m_gameScreenActivity.findViewById(R.id.etAnswer);
+        m_tvScrambledWord = (TextView) m_gameScreenActivity.findViewById(R.id.tvScrambledWord);
     }
 
     public void testActivityExists() {
-        assertNotNull(mGameScreenActivity);
+        assertNotNull(m_gameScreenActivity);
     }
 
     public void testEnterButtonIsDisabled() {
-        assertFalse(mBtnEnter.isEnabled());
+        assertFalse(m_btnEnter.isEnabled());
     }
 
     private void enterAnswer(String answerText) {
@@ -45,19 +45,19 @@ public class GameScreenActivityTests extends ActivityInstrumentationTestCase2<Ga
         getInstrumentation().runOnMainSync(new Runnable() {
             @Override
             public void run() {
-                GameScreenActivityTests.this.mEtAnswer.setText(text);
+                GameScreenActivityTests.this.m_etAnswer.setText(text);
             }
         });
     }
 
     public void testEnterButtonIsDisabledWhenEmptyStringIsEntered() {
         enterAnswer(" ");
-        assertFalse(mBtnEnter.isEnabled());
+        assertFalse(m_btnEnter.isEnabled());
     }
 
     private void testEnterButtonIsEnabledWhenNonEmptyStringIsEntered() {
         enterAnswer("t");
-        assertTrue(mBtnEnter.isEnabled());
+        assertTrue(m_btnEnter.isEnabled());
     }
 
     public void testEnterButtonLoadsResultActivity() {
@@ -67,7 +67,7 @@ public class GameScreenActivityTests extends ActivityInstrumentationTestCase2<Ga
         // Enter an answer
         enterAnswer("t");
         // Tap enter button
-        TouchUtils.clickView(this, mBtnEnter);
+        TouchUtils.clickView(this, m_btnEnter);
         ResultsActivity nextActivity = (ResultsActivity)getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 10000);
         // next activity is opened and captured.
         assertNotNull("Result screen activity is not launched", nextActivity);
@@ -75,6 +75,6 @@ public class GameScreenActivityTests extends ActivityInstrumentationTestCase2<Ga
     }
 
     public void testTextViewHasScrambledWord() {
-       assertTrue("Scrambled word not displayed", mTvScrambledWord.getText().toString().trim().length()>0);
+       assertTrue("Scrambled word not displayed", m_tvScrambledWord.getText().toString().trim().length()>0);
     }
 }
