@@ -11,24 +11,43 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import edu.westga.betsyjeffwordjumble.R;
+import edu.westga.betsyjeffwordjumble.controller.Controller;
 
 public class GameScreenActivity extends AppCompatActivity {
 
-    private Button mBtnEnter;
-    private EditText mEtAnswer;
+    public final static String RESULT = "edu.westga.betsyjeffwordjumble.RESULT";
+
+    private Button m_btnEnter;
+    private EditText m_etAnswer;
+    private TextView m_tvScrambledWord;
+    private Controller m_controller;
+    String m_result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_screen);
 
-        mBtnEnter = (Button)findViewById(R.id.btnEnter);
-        mBtnEnter.setEnabled(false);
+        m_tvScrambledWord = (TextView)findViewById(R.id.tvScrambledWord);
+        m_controller = new Controller();
 
-        mEtAnswer = (EditText)findViewById(R.id.etAnswer);
-        mEtAnswer.addTextChangedListener(this.watcher);
+        m_btnEnter = (Button)findViewById(R.id.btnEnter);
+        m_btnEnter.setEnabled(false);
+
+        m_etAnswer = (EditText)findViewById(R.id.etAnswer);
+        m_etAnswer.addTextChangedListener(this.watcher);
+
+        Intent intent = getIntent();
+        int letterCount = intent.getIntExtra(MainActivity.LETTER_COUNT, 0);
+        if (letterCount == 5) {
+            m_tvScrambledWord.setText(m_controller.getAFiveCharWord());
+        }
+        else if (letterCount == 6) {
+            m_tvScrambledWord.setText(m_controller.getASixCharWord());
+        }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -57,14 +76,21 @@ public class GameScreenActivity extends AppCompatActivity {
 
         @Override
         public void afterTextChanged(Editable s) {
-            boolean answerNotEmpty = GameScreenActivity.this.mEtAnswer.getText().toString().trim().length()>0;
-            GameScreenActivity.this.mBtnEnter.setEnabled(answerNotEmpty);
+            boolean answerNotEmpty = GameScreenActivity.this.m_etAnswer.getText().toString().trim().length()>0;
+            GameScreenActivity.this.m_btnEnter.setEnabled(answerNotEmpty);
         }
     };
 
     /** Called when the user clicks the Enter button from Game screen*/
     public void showResult(View view) {
         Intent intent = new Intent(this, ResultsActivity.class);
+        String theGuess = m_etAnswer.getText().toString();
+        if (m_controller.checkResult(theGuess)) {
+            m_result = "Awesome!";
+        } else {
+            m_result = "Sorry!";
+        }
+        intent.putExtra(RESULT, m_result);
         startActivity(intent);
     }
 

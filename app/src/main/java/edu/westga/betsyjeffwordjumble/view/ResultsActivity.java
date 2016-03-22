@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.TextView;
 
 import edu.westga.betsyjeffwordjumble.R;
 
@@ -16,6 +17,12 @@ public class ResultsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
+
+        Intent intent = getIntent();
+        String result = intent.getStringExtra(GameScreenActivity.RESULT);
+        TextView tvResult = (TextView) findViewById(R.id.tvResult);
+        tvResult.setText(result);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
