@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -12,21 +13,89 @@
     tools:context=".view.GameScreenActivity"
     tools:showIn="@layout/activity_game_screen">
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/llLetters"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text=""
-        android:hint="scrambled"
-        android:id="@+id/tvScrambledWord"
-        android:layout_marginTop="117dp"
-        android:textSize="30dp"
-        android:textAlignment="center"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/btnEnter"
-        android:layout_alignEnd="@+id/btnEnter"
-        android:layout_marginRight="26dp"
-        android:layout_marginEnd="26dp" />
+        android:orientation="horizontal"
+        android:layout_marginTop="80dp"
+        android:layout_gravity="center_horizontal">
+        <TextView
+            android:id="@+id/tvFirstLetter"
+
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:background="@drawable/colored_box"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+
+            android:gravity="center_vertical"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/tvSecondLetter"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/colored_box"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:gravity="center_vertical"
+            android:textAlignment="center"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/tvThirdLetter"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/colored_box"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:gravity="center_vertical"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/tvFourthLetter"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/colored_box"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:gravity="center_vertical"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/tvFifthLetter"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/colored_box"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:gravity="center_vertical"
+            android:textAlignment="center" />
+
+
+    </LinearLayout>
 
     <EditText
         android:layout_width="wrap_content"
@@ -35,19 +104,29 @@
         android:hint="Enter solution"
         android:background="@android:drawable/editbox_dropdown_light_frame"
         android:textSize="30dp"
-        android:layout_below="@+id/tvScrambledWord"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enter"
         android:id="@+id/btnEnter"
-        android:layout_below="@+id/etAnswer"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:onClick="showResult"/>
+        android:onClick="showResult"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/tvHint"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="50dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -58,23 +137,5 @@
         android:textSize="20sp"
 
         android:id="@+id/btnHint"
-        android:layout_above="@+id/etAnswer"
-        android:layout_toRightOf="@+id/tvScrambledWord"
-        android:layout_toEndOf="@+id/tvScrambledWord"
-
         android:onClick="showHint"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/tvHint"
-        android:textAlignment="center"
-        android:textSize="30dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/etAnswer"
-        android:layout_alignEnd="@+id/etAnswer"
-        android:layout_alignLeft="@+id/etAnswer"
-        android:layout_alignStart="@+id/etAnswer"
-        android:layout_marginTop="50dp" />
-</RelativeLayout>
+</LinearLayout>
