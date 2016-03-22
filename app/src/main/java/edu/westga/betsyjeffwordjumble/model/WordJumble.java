@@ -125,7 +125,8 @@ public class WordJumble {
 
     /**
      * Get a hint for the current word. A hint is a string that shows one random character in
-     * the correct position, the rest are hidden by asterisks
+     * the correct position, the rest are hidden by asterisks and the characters are separated by
+     * spaces to make the hint readable
      * @return The hint or null if no word currently selected
      */
     public String getAHint() {
@@ -137,13 +138,13 @@ public class WordJumble {
         StringBuilder hint;
         if (this.currentWord.length() == 5)
         {
-            hint = new StringBuilder("*****");
+            hint = new StringBuilder("* * * * *");
         }
         else
         {
-            hint = new StringBuilder("******");
+            hint = new StringBuilder("* * * * * *");
         }
-        hint.setCharAt(indexToShow, this.currentWord.charAt(indexToShow));
+        hint.setCharAt(indexToShow * 2, this.currentWord.charAt(indexToShow));
         return hint.toString();
     }
 }

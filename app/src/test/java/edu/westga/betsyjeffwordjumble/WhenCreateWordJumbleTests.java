@@ -189,7 +189,7 @@ public class WhenCreateWordJumbleTests {
     public void testHintIsCorrectForAnyLengthWord() {
         WordJumble myWordJumble = new WordJumble(100);
         assertEquals("ahirc", myWordJumble.getAWord());
-        assertEquals("*h***", myWordJumble.getAHint());
+        assertEquals("* h * * *", myWordJumble.getAHint());
     }
 
     /**
@@ -199,7 +199,7 @@ public class WhenCreateWordJumbleTests {
     public void testHintIsCorrectForFiveLengthWord() {
         WordJumble myWordJumble = new WordJumble(100);
         assertEquals("bmera", myWordJumble.getAFiveCharWord());
-        assertEquals("*m***", myWordJumble.getAHint());
+        assertEquals("* m * * *", myWordJumble.getAHint());
     }
 
     /**
@@ -209,6 +209,6 @@ public class WhenCreateWordJumbleTests {
     public void testHintIsCorrectForSixLengthWord() {
         WordJumble myWordJumble = new WordJumble(100);
         assertEquals("ppeoel", myWordJumble.getASixCharWord());
-        assertEquals("**o***", myWordJumble.getAHint());
+        assertEquals("* * o * * *", myWordJumble.getAHint());
     }
 }
