@@ -22,18 +22,15 @@ public class Controller {
     }
 
     public String getAFiveCharWord() {
-        // TODO
-        return "quick";
+        return m_wordJumble.getAFiveCharWord();
     }
 
     public String getASixCharWord() {
-        // TODO
-        return "sixsix";
+        return m_wordJumble.getASixCharWord();
     }
 
     public String getAHint() {
-        // TODO
-        return null;
+        return m_wordJumble.getAHint();
     }
 
 }
