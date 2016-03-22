@@ -23,6 +23,7 @@ public class GameScreenActivityTests extends ActivityInstrumentationTestCase2<Ga
     private Button m_btnEnter;
     private EditText m_etAnswer;
     private TextView m_tvScrambledWord;
+    private Button m_btnHint;
 
     public GameScreenActivityTests() {
         super(GameScreenActivity.class);
@@ -37,6 +38,7 @@ public class GameScreenActivityTests extends ActivityInstrumentationTestCase2<Ga
         m_btnEnter = (Button) m_gameScreenActivity.findViewById(R.id.btnEnter);
         m_etAnswer = (EditText) m_gameScreenActivity.findViewById(R.id.etAnswer);
         m_tvScrambledWord = (TextView) m_gameScreenActivity.findViewById(R.id.tvScrambledWord);
+        m_btnHint = (Button) m_gameScreenActivity.findViewById(R.id.btnHint);
     }
 
     public void testActivityExists() {
@@ -44,7 +46,11 @@ public class GameScreenActivityTests extends ActivityInstrumentationTestCase2<Ga
     }
 
     public void testEnterButtonIsDisabled() {
-        assertFalse(m_btnEnter.isEnabled());
+        assertFalse("Enter button is not disabled.", m_btnEnter.isEnabled());
+    }
+
+    public void testHintButtonIsEnabled() {
+        assertTrue("Hint button is not enabled.", m_btnHint.isEnabled());
     }
 
     private void enterAnswer(String answerText) {
@@ -59,12 +65,12 @@ public class GameScreenActivityTests extends ActivityInstrumentationTestCase2<Ga
 
     public void testEnterButtonIsDisabledWhenEmptyStringIsEntered() {
         enterAnswer(" ");
-        assertFalse(m_btnEnter.isEnabled());
+        assertFalse("Enter button is enabled.", m_btnEnter.isEnabled());
     }
 
     private void testEnterButtonIsEnabledWhenNonEmptyStringIsEntered() {
         enterAnswer("t");
-        assertTrue(m_btnEnter.isEnabled());
+        assertTrue("Enter button is not enabled.", m_btnEnter.isEnabled());
     }
 
     public void testEnterButtonLoadsResultActivity() {

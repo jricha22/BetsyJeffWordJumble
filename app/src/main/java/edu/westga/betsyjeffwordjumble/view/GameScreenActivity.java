@@ -8,10 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import edu.westga.betsyjeffwordjumble.R;
 import edu.westga.betsyjeffwordjumble.controller.Controller;
@@ -24,7 +26,7 @@ public class GameScreenActivity extends AppCompatActivity {
     private EditText m_etAnswer;
     private TextView m_tvScrambledWord;
     private Controller m_controller;
-    String m_result;
+    private String m_result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +94,14 @@ public class GameScreenActivity extends AppCompatActivity {
         }
         intent.putExtra(RESULT, m_result);
         startActivity(intent);
+    }
+
+    /** Show a hint*/
+    public void showHint(View view) {
+        String hint = m_controller.getAHint();
+        Toast toast = Toast.makeText(getApplicationContext(), hint, Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.TOP, 0, 300);
+        toast.show();
     }
 
 }
