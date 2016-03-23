@@ -3,10 +3,7 @@ package edu.westga.betsyjeffwordjumble.view;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Gravity;
@@ -28,13 +25,14 @@ public class GameScreenActivity extends AppCompatActivity {
     private EditText m_etAnswer;
     private Controller m_controller;
     private String m_result;
-    TextView m_tvTitle;
-    TextView m_tvFirstLetter;
-    TextView m_tvSecondLetter;
-    TextView m_tvThirdLetter;
-    TextView m_tvFourthLetter;
-    TextView m_tvFifthLetter;
-    TextView m_tvSixthLetter;
+    private TextView m_tvTitle;
+    private TextView m_tvFirstLetter;
+    private TextView m_tvSecondLetter;
+    private TextView m_tvThirdLetter;
+    private TextView m_tvFourthLetter;
+    private TextView m_tvFifthLetter;
+    private TextView m_tvSixthLetter;
+    private String m_theWord;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,16 +58,15 @@ public class GameScreenActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         int letterCount = intent.getIntExtra(MainActivity.LETTER_COUNT, 0);
-        String theWord = "";
+
         if (letterCount == 5) {
             m_tvTitle.setText("Five Letter Challenge");
-            theWord = m_controller.getAFiveCharWord();
-            m_controller.setTheWord(theWord);
+            m_theWord = m_controller.getAFiveCharWord();
             setLettersInTextViews();
         }
         else if (letterCount == 6) {
             m_tvTitle.setText("Six Letter Challenge");
-            theWord = m_controller.getASixCharWord();
+            m_theWord = m_controller.getASixCharWord();
             addSixthLetterTextView();
             setLettersInTextViews();
         }
@@ -89,13 +86,13 @@ public class GameScreenActivity extends AppCompatActivity {
     }
 
     private void setLettersInTextViews() {
-        m_tvFirstLetter.setText(m_controller.getLetterAtPosition(0));
-        m_tvSecondLetter.setText(m_controller.getLetterAtPosition(1));
-        m_tvThirdLetter.setText(m_controller.getLetterAtPosition(2));
-        m_tvFourthLetter.setText(m_controller.getLetterAtPosition(3));
-        m_tvFifthLetter.setText(m_controller.getLetterAtPosition(4));
+        m_tvFirstLetter.setText(m_theWord.substring(0, 1));
+        m_tvSecondLetter.setText(m_theWord.substring(1, 2));
+        m_tvThirdLetter.setText(m_theWord.substring(2, 3));
+        m_tvFourthLetter.setText(m_theWord.substring(3, 4));
+        m_tvFifthLetter.setText(m_theWord.substring(4, 5));
         if (m_tvSixthLetter != null) {
-            m_tvSixthLetter.setText(m_controller.getLetterAtPosition(5));
+            m_tvSixthLetter.setText(m_theWord.substring(5, 6));
         }
     }
 
@@ -139,7 +136,7 @@ public class GameScreenActivity extends AppCompatActivity {
     public void showHint(View view) {
         String hint = m_controller.getAHint();
         Toast toast = Toast.makeText(getApplicationContext(), hint, Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.TOP, 0, 300);
+        toast.setGravity(Gravity.BOTTOM, 0, 300);
         toast.show();
     }
 
