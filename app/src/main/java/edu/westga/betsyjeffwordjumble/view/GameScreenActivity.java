@@ -28,6 +28,7 @@ public class GameScreenActivity extends AppCompatActivity {
     private EditText m_etAnswer;
     private Controller m_controller;
     private String m_result;
+    TextView m_tvTitle;
     TextView m_tvFirstLetter;
     TextView m_tvSecondLetter;
     TextView m_tvThirdLetter;
@@ -41,9 +42,11 @@ public class GameScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game_screen);
 
         m_controller = new Controller();
+        m_tvTitle = (TextView)findViewById(R.id.tvTitle);
 
         m_btnEnter = (Button)findViewById(R.id.btnEnter);
         m_btnEnter.setEnabled(false);
+        m_btnEnter.setAlpha(.5f);
 
         m_etAnswer = (EditText)findViewById(R.id.etAnswer);
         m_etAnswer.addTextChangedListener(this.watcher);
@@ -59,28 +62,18 @@ public class GameScreenActivity extends AppCompatActivity {
         int letterCount = intent.getIntExtra(MainActivity.LETTER_COUNT, 0);
         String theWord = "";
         if (letterCount == 5) {
+            m_tvTitle.setText("Five Letter Challenge");
             theWord = m_controller.getAFiveCharWord();
             m_controller.setTheWord(theWord);
             setLettersInTextViews();
         }
         else if (letterCount == 6) {
+            m_tvTitle.setText("Six Letter Challenge");
             theWord = m_controller.getASixCharWord();
             addSixthLetterTextView();
             setLettersInTextViews();
         }
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void addSixthLetterTextView() {
@@ -107,7 +100,7 @@ public class GameScreenActivity extends AppCompatActivity {
     }
 
     /**
-     * Listens for any changes in the EditText box and enables/disables the button appropriately
+     * Listens for any changes in the EditText box and enables/disables the blue_button appropriately
      */
     private TextWatcher watcher = new TextWatcher() {
         @Override
@@ -121,10 +114,15 @@ public class GameScreenActivity extends AppCompatActivity {
         public void afterTextChanged(Editable s) {
             boolean answerNotEmpty = GameScreenActivity.this.m_etAnswer.getText().toString().trim().length()>0;
             GameScreenActivity.this.m_btnEnter.setEnabled(answerNotEmpty);
+            if (answerNotEmpty) {
+                GameScreenActivity.this.m_btnEnter.setAlpha(1f);
+            } else {
+                GameScreenActivity.this.m_btnEnter.setAlpha(.5f);
+            }
         }
     };
 
-    /** Called when the user clicks the Enter button from Game screen*/
+    /** Called when the user clicks the Enter blue_button from Game screen*/
     public void showResult(View view) {
         Intent intent = new Intent(this, ResultsActivity.class);
         String theGuess = m_etAnswer.getText().toString();

@@ -22,22 +22,9 @@ public class ResultsActivity extends AppCompatActivity {
         String result = intent.getStringExtra(GameScreenActivity.RESULT);
         TextView tvResult = (TextView) findViewById(R.id.tvResult);
         tvResult.setText(result);
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
-    /** Called when the user clicks the Replay button from Result screen*/
+    /** Called when the user clicks the Replay blue_button from Result screen*/
     public void reloadGame(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

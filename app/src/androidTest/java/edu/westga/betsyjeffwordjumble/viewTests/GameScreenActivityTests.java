@@ -22,7 +22,7 @@ public class GameScreenActivityTests extends ActivityInstrumentationTestCase2<Ga
     private GameScreenActivity m_gameScreenActivity;
     private Button m_btnEnter;
     private EditText m_etAnswer;
-    private TextView m_tvScrambledWord;
+    //private TextView m_tvScrambledWord;
     private Button m_btnHint;
 
     public GameScreenActivityTests() {
@@ -37,7 +37,7 @@ public class GameScreenActivityTests extends ActivityInstrumentationTestCase2<Ga
         m_gameScreenActivity = getActivity();
         m_btnEnter = (Button) m_gameScreenActivity.findViewById(R.id.btnEnter);
         m_etAnswer = (EditText) m_gameScreenActivity.findViewById(R.id.etAnswer);
-        m_tvScrambledWord = (TextView) m_gameScreenActivity.findViewById(R.id.tvScrambledWord);
+        //m_tvScrambledWord = (TextView) m_gameScreenActivity.findViewById(R.id.tvScrambledWord);
         m_btnHint = (Button) m_gameScreenActivity.findViewById(R.id.btnHint);
     }
 
@@ -46,11 +46,11 @@ public class GameScreenActivityTests extends ActivityInstrumentationTestCase2<Ga
     }
 
     public void testEnterButtonIsDisabled() {
-        assertFalse("Enter button is not disabled.", m_btnEnter.isEnabled());
+        assertFalse("Enter blue_button is not disabled.", m_btnEnter.isEnabled());
     }
 
     public void testHintButtonIsEnabled() {
-        assertTrue("Hint button is not enabled.", m_btnHint.isEnabled());
+        assertTrue("Hint blue_button is not enabled.", m_btnHint.isEnabled());
     }
 
     private void enterAnswer(String answerText) {
@@ -65,12 +65,12 @@ public class GameScreenActivityTests extends ActivityInstrumentationTestCase2<Ga
 
     public void testEnterButtonIsDisabledWhenEmptyStringIsEntered() {
         enterAnswer(" ");
-        assertFalse("Enter button is enabled.", m_btnEnter.isEnabled());
+        assertFalse("Enter blue_button is enabled.", m_btnEnter.isEnabled());
     }
 
     private void testEnterButtonIsEnabledWhenNonEmptyStringIsEntered() {
         enterAnswer("t");
-        assertTrue("Enter button is not enabled.", m_btnEnter.isEnabled());
+        assertTrue("Enter blue_button is not enabled.", m_btnEnter.isEnabled());
     }
 
     public void testEnterButtonLoadsResultActivity() {
@@ -79,7 +79,7 @@ public class GameScreenActivityTests extends ActivityInstrumentationTestCase2<Ga
                 .addMonitor(ResultsActivity.class.getName(), null, false);
         // Enter an answer
         enterAnswer("t");
-        // Tap enter button
+        // Tap enter blue_button
         TouchUtils.clickView(this, m_btnEnter);
         ResultsActivity nextActivity = (ResultsActivity)getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 10000);
         // next activity is opened and captured.
@@ -87,21 +87,21 @@ public class GameScreenActivityTests extends ActivityInstrumentationTestCase2<Ga
         nextActivity .finish();
     }
 
-    public void testTextViewHasScrambledWord() {
+    /*public void testTextViewHasScrambledWord() {
        assertTrue("Scrambled word not displayed", m_tvScrambledWord.getText().toString().trim().length() > 0);
-    }
+    }*/
 
     public void testLetterCountIntentExtraIsReceived() {
         int intentExtra = m_gameScreenActivity.getIntent().getIntExtra(LETTER_COUNT, 0);
         assertEquals(5, intentExtra);
     }
 
-    public void testFiveLetterScrambledWordIsDisplayedWhenIntentExtraIs5() {
+    /*public void testFiveLetterScrambledWordIsDisplayedWhenIntentExtraIs5() {
         int intentExtra = m_gameScreenActivity.getIntent().getIntExtra(LETTER_COUNT, 0);
         assertTrue("Not a five letter word", m_tvScrambledWord.getText().length() == 5);
-    }
+    }*/
 
-    public void testSixLetterScrambledWordIsDisplayedWhenIntentExtraIs6() {
+    /*public void testSixLetterScrambledWordIsDisplayedWhenIntentExtraIs6() {
         m_gameScreenActivity.finish();  // close the activity
         setActivity(null); // forces next call of getActivity to re-open the activity
         Intent intent = new Intent();
@@ -111,5 +111,5 @@ public class GameScreenActivityTests extends ActivityInstrumentationTestCase2<Ga
         m_tvScrambledWord = (TextView) m_gameScreenActivity.findViewById(R.id.tvScrambledWord);
         int intentExtra = m_gameScreenActivity.getIntent().getIntExtra(LETTER_COUNT, 0);
         assertTrue("Not a six letter word", m_tvScrambledWord.getText().length() == 6);
-    }
+    }*/
 }

@@ -41,7 +41,7 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
 
     public void testPlayButtonIsDisabled() {
         m_radioGroup.clearCheck();
-        assertFalse("Play button is not disabled.", m_btnPlay.isEnabled());
+        assertFalse("Play blue_button is not disabled.", m_btnPlay.isEnabled());
     }
 
     public void selectRadioButton1() {
@@ -67,12 +67,12 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
     public void testPlayButtonIsEnabledWhenFirstRadioButtonIsSelected() {
 
         selectRadioButton1();
-        assertTrue("Play button is not enabled.", m_btnPlay.isEnabled());
+        assertTrue("Play blue_button is not enabled.", m_btnPlay.isEnabled());
     }
 
     public void testPlayButtonIsEnabledWhenSecondRadioButtonIsSelected() {
         selectRadioButton2();
-        assertTrue("Play button is not enabled.", m_btnPlay.isEnabled());
+        assertTrue("Play blue_button is not enabled.", m_btnPlay.isEnabled());
     }
 
     public void testPlayButtonLoadsGameScreenActivity() {
@@ -80,7 +80,7 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
         Instrumentation.ActivityMonitor activityMonitor = getInstrumentation()
                 .addMonitor(GameScreenActivity.class.getName(), null, false);
         selectRadioButton1();
-        // Tap play button
+        // Tap play blue_button
         TouchUtils.clickView(this, m_btnPlay);
         GameScreenActivity nextActivity = (GameScreenActivity)getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 10000);
         // next activity is opened and captured.

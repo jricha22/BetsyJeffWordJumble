@@ -50,7 +50,7 @@ public class ResultsActivityTests extends ActivityInstrumentationTestCase2<Resul
         // register next activity that need to be monitored.
         Instrumentation.ActivityMonitor activityMonitor = getInstrumentation()
                 .addMonitor(MainActivity.class.getName(), null, false);
-        // Tap replay button
+        // Tap replay blue_button
         TouchUtils.clickView(this, m_btnReplay);
         MainActivity nextActivity = (MainActivity)getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 10000);
         // next activity is opened and captured.
