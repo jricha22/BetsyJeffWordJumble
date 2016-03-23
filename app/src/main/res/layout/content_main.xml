@@ -26,12 +26,13 @@
         android:textAlignment="center" />
 
     <Button
-        android:layout_width="210dp"
-        android:layout_height="40dp"
+        android:layout_width="230dp"
+        android:layout_height="45dp"
 
         android:text="@string/string_five"
-        android:textSize="16dp"
+        android:textSize="20dp"
         android:textColor="#FFFFFF"
+        android:textAllCaps="false"
 
         android:id="@+id/btnFiveLetterGame"
         android:onClick="playFiveLetterGame"
@@ -45,12 +46,13 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:layout_width="210dp"
-        android:layout_height="40dp"
+        android:layout_width="230dp"
+        android:layout_height="45dp"
 
         android:text="@string/string_six"
-        android:textSize="16dp"
+        android:textSize="20dp"
         android:textColor="#FFFFFF"
+        android:textAllCaps="false"
 
         android:id="@+id/btnSixLetterGame"
         android:onClick="playSixLetterGame"
