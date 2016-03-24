@@ -17,7 +17,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/string_welcome_text"
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -36,14 +35,14 @@
 
         android:id="@+id/btnFiveLetterGame"
         android:onClick="playFiveLetterGame"
-        android:layout_marginTop="115dp"
         android:background="@drawable/blue_button"
         android:shadowColor="#A8A8A8"
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="5"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/btnSixLetterGame"
+        android:layout_alignStart="@+id/btnSixLetterGame" />
 
     <Button
         android:layout_width="230dp"
@@ -61,8 +60,16 @@
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="5"
+        android:layout_marginTop="30dp"
         android:layout_below="@+id/btnFiveLetterGame"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="59dp" />
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@drawable/wjlogo"
+        android:layout_alignTop="@+id/textView"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
