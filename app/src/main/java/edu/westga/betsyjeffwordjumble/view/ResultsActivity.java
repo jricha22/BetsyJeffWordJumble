@@ -24,7 +24,7 @@ public class ResultsActivity extends AppCompatActivity {
         tvResult.setText(result);
     }
 
-    /** Called when the user clicks the Replay blue_button from Result screen*/
+    /** Called when the user clicks the Replay button from Result screen*/
     public void reloadGame(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

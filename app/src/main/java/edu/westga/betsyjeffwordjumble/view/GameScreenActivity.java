@@ -21,7 +21,7 @@ public class GameScreenActivity extends AppCompatActivity {
 
     public final static String RESULT = "edu.westga.betsyjeffwordjumble.RESULT";
 
-    private Button m_btnEnter;
+    private Button m_btnSubmit;
     private EditText m_etAnswer;
     private Controller m_controller;
     private String m_result;
@@ -42,9 +42,9 @@ public class GameScreenActivity extends AppCompatActivity {
         m_controller = new Controller();
         m_tvTitle = (TextView)findViewById(R.id.tvTitle);
 
-        m_btnEnter = (Button)findViewById(R.id.btnEnter);
-        m_btnEnter.setEnabled(false);
-        m_btnEnter.setAlpha(.5f);
+        m_btnSubmit = (Button)findViewById(R.id.btnSubmit);
+        m_btnSubmit.setEnabled(false);
+        m_btnSubmit.setAlpha(.5f);
 
         m_etAnswer = (EditText)findViewById(R.id.etAnswer);
         m_etAnswer.addTextChangedListener(this.watcher);
@@ -97,7 +97,7 @@ public class GameScreenActivity extends AppCompatActivity {
     }
 
     /**
-     * Listens for any changes in the EditText box and enables/disables the blue_button appropriately
+     * Listens for any changes in the EditText box and enables/disables the button appropriately
      */
     private TextWatcher watcher = new TextWatcher() {
         @Override
@@ -110,16 +110,16 @@ public class GameScreenActivity extends AppCompatActivity {
         @Override
         public void afterTextChanged(Editable s) {
             boolean answerNotEmpty = GameScreenActivity.this.m_etAnswer.getText().toString().trim().length()>0;
-            GameScreenActivity.this.m_btnEnter.setEnabled(answerNotEmpty);
+            GameScreenActivity.this.m_btnSubmit.setEnabled(answerNotEmpty);
             if (answerNotEmpty) {
-                GameScreenActivity.this.m_btnEnter.setAlpha(1f);
+                GameScreenActivity.this.m_btnSubmit.setAlpha(1f);
             } else {
-                GameScreenActivity.this.m_btnEnter.setAlpha(.5f);
+                GameScreenActivity.this.m_btnSubmit.setAlpha(.5f);
             }
         }
     };
 
-    /** Called when the user clicks the Enter blue_button from Game screen*/
+    /** Called when the user clicks the Submit button from Game screen*/
     public void showResult(View view) {
         Intent intent = new Intent(this, ResultsActivity.class);
         String theGuess = m_etAnswer.getText().toString();

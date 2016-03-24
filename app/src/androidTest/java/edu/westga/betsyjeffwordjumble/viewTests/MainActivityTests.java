@@ -12,6 +12,7 @@ import edu.westga.betsyjeffwordjumble.view.GameScreenActivity;
 import edu.westga.betsyjeffwordjumble.view.MainActivity;
 
 /**
+ * Instrumentation tests for MainActivity class.
  * Created by Betsy on 3/18/2016.
  */
 public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActivity> {

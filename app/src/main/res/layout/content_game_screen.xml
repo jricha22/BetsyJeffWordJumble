@@ -137,7 +137,7 @@
         android:textSize="16dp"
         android:textColor="#FFFFFF"
 
-        android:id="@+id/btnEnter"
+        android:id="@+id/btnSubmit"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:onClick="showResult"

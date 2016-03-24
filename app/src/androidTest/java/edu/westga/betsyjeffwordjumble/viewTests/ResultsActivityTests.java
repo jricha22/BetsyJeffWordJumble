@@ -14,6 +14,7 @@ import edu.westga.betsyjeffwordjumble.view.MainActivity;
 import edu.westga.betsyjeffwordjumble.view.ResultsActivity;
 
 /**
+ * Instrumentation tests for ResultsActivity class.
  * Created by Betsy on 3/18/2016.
  */
 public class ResultsActivityTests extends ActivityInstrumentationTestCase2<ResultsActivity> {
@@ -50,7 +51,7 @@ public class ResultsActivityTests extends ActivityInstrumentationTestCase2<Resul
         // register next activity that need to be monitored.
         Instrumentation.ActivityMonitor activityMonitor = getInstrumentation()
                 .addMonitor(MainActivity.class.getName(), null, false);
-        // Tap replay blue_button
+        // Tap replay button
         TouchUtils.clickView(this, m_btnReplay);
         MainActivity nextActivity = (MainActivity)getInstrumentation().waitForMonitorWithTimeout(activityMonitor, 10000);
         // next activity is opened and captured.
