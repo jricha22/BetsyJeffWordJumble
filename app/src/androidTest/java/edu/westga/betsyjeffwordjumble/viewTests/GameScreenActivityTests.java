@@ -7,6 +7,7 @@ import android.test.TouchUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.view.View;
 
 import edu.westga.betsyjeffwordjumble.R;
 import edu.westga.betsyjeffwordjumble.view.GameScreenActivity;
@@ -112,7 +113,7 @@ public class GameScreenActivityTests extends ActivityInstrumentationTestCase2<Ga
     }
 
     public void testSixthTextViewDoesNotExistWhenIntentExtraIs5() {
-        assertNull("Sixth textview exists", m_tvSixthLetter);
+        assertEquals(View.GONE, m_tvSixthLetter.getVisibility());
     }
 
     public void testSixthTextViewIsDisplayedWhenIntentExtraIs6() {
