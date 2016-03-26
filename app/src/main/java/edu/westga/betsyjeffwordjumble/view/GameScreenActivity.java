@@ -77,13 +77,13 @@ public class GameScreenActivity extends AppCompatActivity {
     }
 
     private void setLettersInTextViews() {
-        m_tvFirstLetter.setText(m_theWord.substring(0, 1));
-        m_tvSecondLetter.setText(m_theWord.substring(1, 2));
-        m_tvThirdLetter.setText(m_theWord.substring(2, 3));
-        m_tvFourthLetter.setText(m_theWord.substring(3, 4));
-        m_tvFifthLetter.setText(m_theWord.substring(4, 5));
+        m_tvFirstLetter.setText(m_theWord.substring(0, 1).toUpperCase());
+        m_tvSecondLetter.setText(m_theWord.substring(1, 2).toUpperCase());
+        m_tvThirdLetter.setText(m_theWord.substring(2, 3).toUpperCase());
+        m_tvFourthLetter.setText(m_theWord.substring(3, 4).toUpperCase());
+        m_tvFifthLetter.setText(m_theWord.substring(4, 5).toUpperCase());
         if (m_tvSixthLetter.getVisibility() == View.VISIBLE) {
-            m_tvSixthLetter.setText(m_theWord.substring(5, 6));
+            m_tvSixthLetter.setText(m_theWord.substring(5, 6).toUpperCase());
         }
     }
 
