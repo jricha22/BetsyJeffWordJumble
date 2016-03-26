@@ -141,7 +141,7 @@ public class GameScreenActivity extends AppCompatActivity {
     public void showHint(View view) {
         String hint = m_controller.getAHint();
         Toast toast = Toast.makeText(getApplicationContext(), hint, Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.BOTTOM, 0, 300);
+        toast.setGravity(Gravity.BOTTOM, 0, 50);
         toast.show();
     }
 
