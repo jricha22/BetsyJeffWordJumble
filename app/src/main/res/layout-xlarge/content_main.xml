@@ -40,7 +40,7 @@
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="5"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/imageView"
         android:layout_alignLeft="@+id/btnSixLetterGame"
         android:layout_alignStart="@+id/btnSixLetterGame" />
 
