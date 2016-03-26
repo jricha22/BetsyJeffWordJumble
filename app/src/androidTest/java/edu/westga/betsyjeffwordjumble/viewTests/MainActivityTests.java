@@ -4,8 +4,6 @@ import android.app.Instrumentation;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.TouchUtils;
 import android.widget.Button;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 
 import edu.westga.betsyjeffwordjumble.R;
 import edu.westga.betsyjeffwordjumble.view.GameScreenActivity;

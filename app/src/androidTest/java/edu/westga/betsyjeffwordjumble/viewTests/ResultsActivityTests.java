@@ -1,7 +1,6 @@
 package edu.westga.betsyjeffwordjumble.viewTests;
 
 import android.app.Instrumentation;
-import android.app.SearchManager;
 import android.content.Intent;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.TouchUtils;
@@ -9,7 +8,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import edu.westga.betsyjeffwordjumble.R;
-import edu.westga.betsyjeffwordjumble.view.GameScreenActivity;
 import edu.westga.betsyjeffwordjumble.view.MainActivity;
 import edu.westga.betsyjeffwordjumble.view.ResultsActivity;
 

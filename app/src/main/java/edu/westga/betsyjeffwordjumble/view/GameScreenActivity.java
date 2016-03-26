@@ -1,7 +1,7 @@
 package edu.westga.betsyjeffwordjumble.view;
 
 import android.content.Intent;
-import android.graphics.Color;
+import android.content.res.Configuration;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +11,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -126,8 +125,12 @@ public class GameScreenActivity extends AppCompatActivity {
     /** Show a hint*/
     public void showHint(View view) {
         String hint = m_controller.getAHint();
-        Toast toast = Toast.makeText(getApplicationContext(), hint, Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.BOTTOM, 0, 50);
+        Toast toast = Toast.makeText(getApplicationContext(), hint, Toast.LENGTH_LONG);
+        if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            toast.setGravity(Gravity.BOTTOM, 0, 50);
+        } else if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+            toast.setGravity(Gravity.BOTTOM, 0, 200);
+        }
         toast.show();
     }
 

@@ -6,9 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 
 import edu.westga.betsyjeffwordjumble.R;
 
@@ -16,17 +13,12 @@ public class MainActivity extends AppCompatActivity {
 
     public final static String LETTER_COUNT = "edu.westga.betsyjeffwordjumble.LETTER_COUNT";
 
-    private Button m_btnFiveLetter;
-    private Button m_btnSixLetter;
     private int m_letterCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        m_btnFiveLetter = (Button)findViewById(R.id.btnFiveLetterGame);
-        m_btnSixLetter = (Button)findViewById(R.id.btnSixLetterGame);
     }
 
     @Override
@@ -65,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void playGame(){
         Intent intent = new Intent(this, GameScreenActivity.class);
-
         intent.putExtra(LETTER_COUNT, m_letterCount);
         startActivity(intent);
     }

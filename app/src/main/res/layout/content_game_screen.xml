@@ -17,8 +17,7 @@
     <TextView
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/tvTitle"
-
-        android:text="Five Letter Challenge"
+        android:text="@string/string_five"
         android:textColor="#fff"
         android:textSize="50sp"
         android:textStyle="bold"
