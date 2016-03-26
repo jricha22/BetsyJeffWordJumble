@@ -19,18 +19,12 @@
         android:id="@+id/tvTitle"
 
         android:text="Five Letter Challenge"
-        android:textColor="#145E82"
-        android:textSize="30sp"
+        android:textColor="#fff"
+        android:textSize="50sp"
         android:textStyle="bold"
-        android:shadowColor="#ffffff"
-        android:shadowDx="2"
-        android:shadowDy="2"
-        android:shadowRadius="20"
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="70dp"
         android:textAlignment="center"
         android:padding="10dp" />
 
@@ -49,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:background="@drawable/colored_box"
+            android:background="@drawable/green_box"
             android:shadowColor="#A8A8A8"
             android:shadowDx="0"
             android:shadowDy="0"
@@ -64,7 +58,7 @@
             android:textSize="30sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/colored_box"
+            android:background="@drawable/green_box"
             android:shadowColor="#A8A8A8"
             android:shadowDx="0"
             android:shadowDy="0"
@@ -79,7 +73,7 @@
             android:textSize="30sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/colored_box"
+            android:background="@drawable/green_box"
             android:shadowColor="#A8A8A8"
             android:shadowDx="0"
             android:shadowDy="0"
@@ -93,7 +87,7 @@
             android:textSize="30sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/colored_box"
+            android:background="@drawable/green_box"
             android:shadowColor="#A8A8A8"
             android:shadowDx="0"
             android:shadowDy="0"
@@ -107,7 +101,7 @@
             android:textSize="30sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/colored_box"
+            android:background="@drawable/green_box"
             android:shadowColor="#A8A8A8"
             android:shadowDx="0"
             android:shadowDy="0"
@@ -173,7 +167,6 @@
         android:textColor="#FFFFFF"
 
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
 
 
         android:background="@drawable/hint_button"

@@ -40,9 +40,10 @@
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="5"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/imageView"
         android:layout_alignLeft="@+id/btnSixLetterGame"
-        android:layout_alignStart="@+id/btnSixLetterGame" />
+        android:layout_alignStart="@+id/btnSixLetterGame"
+        android:layout_marginTop="45dp" />
 
     <Button
         android:layout_width="230dp"
@@ -60,16 +61,17 @@
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="5"
-        android:layout_marginTop="30dp"
         android:layout_below="@+id/btnFiveLetterGame"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="41dp" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
-        android:src="@drawable/wjlogo"
+        android:src="@drawable/jwlogo"
         android:layout_alignTop="@+id/textView"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

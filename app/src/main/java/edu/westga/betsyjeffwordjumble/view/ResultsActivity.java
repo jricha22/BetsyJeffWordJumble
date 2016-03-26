@@ -2,11 +2,9 @@ package edu.westga.betsyjeffwordjumble.view;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import edu.westga.betsyjeffwordjumble.R;
@@ -17,9 +15,14 @@ public class ResultsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
-
+        ImageView imageView = (ImageView)findViewById(R.id.imageView);
         Intent intent = getIntent();
         String result = intent.getStringExtra(GameScreenActivity.RESULT);
+        if (result.equals("Awesome!")) {
+            imageView.setImageResource(R.drawable.thumbsup);
+        } else if (result.equals("Sorry!")) {
+            imageView.setImageResource(R.drawable.disappointed);
+        }
         TextView tvResult = (TextView) findViewById(R.id.tvResult);
         tvResult.setText(result);
     }

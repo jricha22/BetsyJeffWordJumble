@@ -2,6 +2,7 @@ package edu.westga.betsyjeffwordjumble.view;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -41,6 +42,8 @@ public class GameScreenActivity extends AppCompatActivity {
 
         m_controller = new Controller();
         m_tvTitle = (TextView)findViewById(R.id.tvTitle);
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/waltograph42.ttf");
+        m_tvTitle.setTypeface(tf);
 
         m_btnSubmit = (Button)findViewById(R.id.btnSubmit);
         m_btnSubmit.setEnabled(false);
@@ -81,7 +84,7 @@ public class GameScreenActivity extends AppCompatActivity {
         m_tvSixthLetter.setGravity(Gravity.CENTER);
         m_tvSixthLetter.setTextColor(Color.WHITE);
         m_tvSixthLetter.setTextSize(30);
-        m_tvSixthLetter.setBackgroundResource(R.drawable.colored_box);
+        m_tvSixthLetter.setBackgroundResource(R.drawable.green_box);
         linearLayout.addView(m_tvSixthLetter);
     }
 
