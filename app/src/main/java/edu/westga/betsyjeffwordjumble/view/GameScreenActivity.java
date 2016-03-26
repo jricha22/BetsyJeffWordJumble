@@ -57,7 +57,7 @@ public class GameScreenActivity extends AppCompatActivity {
         m_tvThirdLetter = (TextView)findViewById(R.id.tvThirdLetter);
         m_tvFourthLetter = (TextView)findViewById(R.id.tvFourthLetter);
         m_tvFifthLetter = (TextView)findViewById(R.id.tvFifthLetter);
-        m_tvSixthLetter = null;
+        m_tvSixthLetter = (TextView)findViewById(R.id.tvSixthLetter);
 
         Intent intent = getIntent();
         int letterCount = intent.getIntExtra(MainActivity.LETTER_COUNT, 0);
@@ -65,29 +65,15 @@ public class GameScreenActivity extends AppCompatActivity {
         if (letterCount == 5) {
             m_tvTitle.setText("Five Letter Challenge");
             m_theWord = m_controller.getAFiveCharWord();
+            m_tvSixthLetter.setVisibility(View.GONE);
             setLettersInTextViews();
         }
         else if (letterCount == 6) {
             m_tvTitle.setText("Six Letter Challenge");
             m_theWord = m_controller.getASixCharWord();
-            addSixthLetterTextView();
             setLettersInTextViews();
         }
 
-    }
-
-    private void addSixthLetterTextView() {
-        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.llLetters);
-        m_tvSixthLetter = new TextView(this);
-        m_tvSixthLetter.setId(R.id.tvSixthLetter);
-        m_tvSixthLetter.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-        m_tvSixthLetter.setGravity(Gravity.CENTER);
-        m_tvSixthLetter.setTextColor(Color.WHITE);
-        m_tvSixthLetter.setTextSize(30);
-        m_tvSixthLetter.setBackgroundResource(R.drawable.green_box);
-        m_tvSixthLetter.setWidth(50);
-        m_tvSixthLetter.setHeight(50);
-        linearLayout.addView(m_tvSixthLetter);
     }
 
     private void setLettersInTextViews() {
@@ -96,7 +82,7 @@ public class GameScreenActivity extends AppCompatActivity {
         m_tvThirdLetter.setText(m_theWord.substring(2, 3));
         m_tvFourthLetter.setText(m_theWord.substring(3, 4));
         m_tvFifthLetter.setText(m_theWord.substring(4, 5));
-        if (m_tvSixthLetter != null) {
+        if (m_tvSixthLetter.getVisibility() == View.VISIBLE) {
             m_tvSixthLetter.setText(m_theWord.substring(5, 6));
         }
     }
