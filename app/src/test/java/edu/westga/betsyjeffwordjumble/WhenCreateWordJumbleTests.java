@@ -85,6 +85,16 @@ public class WhenCreateWordJumbleTests {
     }
 
     /**
+     * Test guessing correctly with mixed case returns True
+     */
+    @Test
+    public void testGuessWordCorrectlyWithMixedCaseIsTrue() {
+        WordJumble myWordJumble = new WordJumble(100);
+        String jumbled = myWordJumble.getAWord();
+        assertEquals(true, myWordJumble.checkResult("ChAiR"));
+    }
+
+    /**
      * Test guessing five char word correctly returns True
      */
     @Test
