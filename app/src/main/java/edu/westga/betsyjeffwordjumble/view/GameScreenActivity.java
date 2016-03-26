@@ -85,6 +85,8 @@ public class GameScreenActivity extends AppCompatActivity {
         m_tvSixthLetter.setTextColor(Color.WHITE);
         m_tvSixthLetter.setTextSize(30);
         m_tvSixthLetter.setBackgroundResource(R.drawable.green_box);
+        m_tvSixthLetter.setWidth(50);
+        m_tvSixthLetter.setHeight(50);
         linearLayout.addView(m_tvSixthLetter);
     }
 
